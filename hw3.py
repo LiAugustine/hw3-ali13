@@ -1,4 +1,5 @@
 import math
+import pathlib
 ##CSC 4350 HW #3 - AugustineLi
 
 ##Question 1 function
@@ -47,11 +48,32 @@ print()
 
 ##Question 3 Function
 def question_three(list): 
-  singleString = ", ".join(list) ##joins into one string
+  singleString = ', '.join(list) ##joins into one string
   return singleString
 print('Question 3 Test Cases:')
 print(question_three(["One", "Two", "Three"]))
 print(question_three(["123", "456", "789"]))
 print()
+
+##Question 4 Function
+
+def question_four(listOfLists):
+
+  row = [''.join(list) for list in listOfLists] ##each list within the list of lists becomes a string 
+  ##create outputFile.txt, open it for reading and writing
+  with open('outputFile.txt', 'r+') as outputFile: 
+    data = outputFile.read()
+    outputFile.seek(0)
+    for list in row: ##for list in row
+      outputFile.write("[" + list + "]") ##write it to the file
+    outputFile.truncate()
+  path = pathlib.Path(__file__).parent.absolute() ##path of current working directory
+  return "Path is " + str(path) + "/" + outputFile.name + " which contains the row " + data
+  
+print('Question 4 Test Cases:')
+print(question_four([["1, 2, 3"], ["4, 5, 6"], ["7, 8, 9"]]))
+
+##print()
+
 
 
