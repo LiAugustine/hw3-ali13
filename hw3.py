@@ -1,5 +1,8 @@
 import math
 import pathlib
+import os
+import shutil
+
 ##CSC 4350 HW #3 - AugustineLi
 
 ##Question 1 function
@@ -81,7 +84,8 @@ def question_five(filename):
 
 print('Question 5 Test Cases:')
 print(question_five('/home/runner/hw3-1/outputFile.txt'))
-
+print()
+  
 ##Question 6 Function
 def question_six(num1, num2):
   try:
@@ -92,6 +96,7 @@ def question_six(num1, num2):
 print('Question 6 Test Cases:')
 print(question_six(6,3))
 print(question_six(6,0))
+print()
 
 ##Question 7 Function
 def question_seven(intList):
@@ -103,5 +108,24 @@ def question_seven(intList):
 print('Question 7 Test Cases:')
 print(question_seven([1, 2, 3, 3, 3, 4]))##[1, 2, 3, 4]
 print(question_seven([1, 2, 3, 2, 5, 6, 6, 5, 1]))##[1, 2, 3, 5, 6]
+print()
+
+def question_eight(dirName): ##take directory name
+  currentDir = os.getcwd() ##get current working directory
+  fullPath = os.path.join(currentDir, dirName)
+
+   ##make sure folder does not already exist
+  if not os.path.exists(fullPath): 
+    os.mkdir(fullPath, 0o666) ##0o666 = default mode
+  else:
+    shutil.rmtree(fullPath)   ##deletes the folder if it already exists        
+    os.mkdir(fullPath, 0o666)
+  
+  return "Directory named " + dirName + " created."
+
+print('Question 8 Test Cases:')
+print(question_eight("TestDir"))
+print(question_eight("TestDir")) ##test for duplicate
+print(question_eight("AnotherDir"))
 
 
