@@ -93,4 +93,15 @@ print('Question 6 Test Cases:')
 print(question_six(6,3))
 print(question_six(6,0))
 
+##Question 7 Function
+def question_seven(intList):
+  from collections import OrderedDict
+  ##print("Original list: " + str(intList))
+  newList = list(OrderedDict.fromkeys(intList)) ##remembers the order that keys were inserted
+  return "Original list: " + str(intList) + "\nNew list: " + str(newList) 
+
+print('Question 7 Test Cases:')
+print(question_seven([1, 2, 3, 3, 3, 4]))##[1, 2, 3, 4]
+print(question_seven([1, 2, 3, 2, 5, 6, 6, 5, 1]))##[1, 2, 3, 5, 6]
+
 
