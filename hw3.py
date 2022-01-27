@@ -58,7 +58,6 @@ print()
 ##Question 4 Function
 
 def question_four(listOfLists):
-
   row = [''.join(list) for list in listOfLists] ##each list within the list of lists becomes a string 
   ##create outputFile.txt, open it for reading and writing
   with open('outputFile.txt', 'r+') as outputFile: 
@@ -71,9 +70,17 @@ def question_four(listOfLists):
   return "Path is " + str(path) + "/" + outputFile.name + " which contains the row " + data
   
 print('Question 4 Test Cases:')
-print(question_four([["1, 2, 3"], ["4, 5, 6"], ["7, 8, 9"]]))
+print(question_four([["one, two, three"], ["four, five, six"] ]))
+print()
 
-##print()
+##Question 5 Function, works with multiple lines
+def question_five(filename):
+  with open(filename) as file:
+    lines = file.read().splitlines() ##splitlines splits a line into a list
+  return lines
 
+print('Question 5 Test Cases:')
+print(question_five('/home/runner/hw3-1/outputFile.txt'))
+  
 
 
