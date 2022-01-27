@@ -62,25 +62,26 @@ print()
 
 def question_four(listOfLists):
   row = [''.join(list) for list in listOfLists] ##each list within the list of lists becomes a string 
-  ##create outputFile.txt, open it for reading and writing
-  with open('outputFile.txt', 'r+') as outputFile: 
-    data = outputFile.read()
-    outputFile.seek(0)
+  ##create outputFile.txt if it does not already exist (a+), if already exists it is appeneded
+  with open('outputFile.txt', 'a+') as outputFile: 
+    ##data = outputFile.read()
     for list in row: ##for list in row
       outputFile.write("[" + list + "]") ##write it to the file
+    outputFile.write("\n")
     outputFile.truncate()
-  path = pathlib.Path(__file__).parent.absolute() ##path of current working directory
-  return "Path is " + str(path) + "/" + outputFile.name + " which contains the row " + data
+    outputFile.seek(0)
+    path = pathlib.Path(__file__).parent.absolute() ##path of current working directory
+    return "Path is " + str(path) + "/" + outputFile.name + " which contains the row " + outputFile.read()
   
 print('Question 4 Test Cases:')
 print(question_four([["one, two, three"], ["four, five, six"] ]))
+print(question_four([["four, five, six"], ["one, two, three"]  ]))
 print()
 
 ##Question 5 Function, works with multiple lines
 def question_five(filename):
   with open(filename) as file:
-    lines = file.read().splitlines() ##splitlines splits a line into a list
-  return lines
+    return "The list of list of the CSV is " + str(file.read().splitlines()) ##each line is split into a list
 
 print('Question 5 Test Cases:')
 print(question_five('/home/runner/hw3-1/outputFile.txt'))
@@ -127,5 +128,3 @@ print('Question 8 Test Cases:')
 print(question_eight("TestDir"))
 print(question_eight("TestDir")) ##test for duplicate
 print(question_eight("AnotherDir"))
-
-
