@@ -43,3 +43,15 @@ def question_two(R, H): ##two inputs, radius and height
 print('Question 2 Test Cases:')
 print(question_two(2, 2)) ##should be 25.13
 print(question_two(3, 4)) ##should be 113.1
+print()
+
+##Question 3 Function
+def question_three(list): 
+  singleString = ", ".join(list) ##joins into one string
+  return singleString
+print('Question 3 Test Cases:')
+print(question_three(["One", "Two", "Three"]))
+print(question_three(["123", "456", "789"]))
+print()
+
+
