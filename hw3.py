@@ -81,6 +81,16 @@ def question_five(filename):
 
 print('Question 5 Test Cases:')
 print(question_five('/home/runner/hw3-1/outputFile.txt'))
-  
+
+##Question 6 Function
+def question_six(num1, num2):
+  try:
+    return num1/num2 ##try returning num1/num2
+  except ZeroDivisionError: 
+    return None ##return None
+
+print('Question 6 Test Cases:')
+print(question_six(6,3))
+print(question_six(6,0))
 
 
